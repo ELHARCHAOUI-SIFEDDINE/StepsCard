@@ -1,13 +1,219 @@
-body {
+/* Modern Reset and Global Styles */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Inter", sans-serif;
+  color: #2d3748;
+  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 50%, #6e48aa 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Steps Card */
+.steps {
+  width: 800px; /* Fixed width */
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 60px 50px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.steps::before {
+  content: "";
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.steps .content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Numbers Section */
+.numbers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.numbers > div {
+  height: 70px;
+  width: 70px;
+  background-color: #edf2f7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4a5568;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.numbers .active {
+  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  color: #fff;
+  transform: scale(1.2) translateY(-5px);
+  box-shadow: 0 10px 20px rgba(110, 72, 170, 0.4);
+}
+
+/* Message Section */
+.message {
+  text-align: center;
+  font-size: 26px;
+  margin: 60px 0;
+  font-weight: 600;
+  color: #2d3748;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.message h3 {
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  font-size: 34px;
+  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+}
+
+/* Buttons Section */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.buttons button {
+  border: none;
+  cursor: pointer;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6e48aa 0%, #9d50bb 100%);
+  color: #fff;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 20px rgba(110, 72, 170, 0.3);
+}
+
+.buttons button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(110, 72, 170, 0.4);
+}
+
+.buttons button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(110, 72, 170, 0.2);
+}
+
+.buttons button span {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 40px;
+  color: #a0aec0;
+  transition: all 0.3s ease;
+}
+
+.close:hover {
+  color: #6e48aa;
+  transform: rotate(90deg);
+}
+
+/* Responsive Design */
+@media (max-width: 840px) {
+  .steps {
+    width: 95%;
+    padding: 40px 30px;
+  }
+
+  .numbers > div {
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+  }
+
+  .message {
+    font-size: 22px;
+    margin: 40px 0;
+  }
+
+  .message h3 {
+    font-size: 28px;
+  }
+
+  .buttons button {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+
+  .close {
+    font-size: 34px;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .steps {
+    padding: 30px 20px;
+  }
+
+  .numbers > div {
+    height: 50px;
+    width: 50px;
+    font-size: 18px;
+  }
+
+  .message {
+    font-size: 20px;
+    margin: 30px 0;
+  }
+
+  .message h3 {
+    font-size: 24px;
+  }
+
+  .buttons button {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+
+  .close {
+    font-size: 30px;
+  }
 }
